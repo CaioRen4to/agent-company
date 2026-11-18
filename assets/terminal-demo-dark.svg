@@ -1,0 +1,22 @@
+<svg viewBox="0 0 1200 400" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Demonstração de Terminal da JARVIS Agent Company">
+  <rect width="1200" height="400" rx="16" fill="#090D16" stroke="#283548" stroke-width="1.6"/>
+  <!-- Window Header -->
+  <rect width="1200" height="44" rx="16" fill="#141B2D" stroke="#283548" stroke-width="1"/>
+  <rect x="0" y="28" width="1200" height="16" fill="#141B2D"/>
+  <line x1="0" y1="44" x2="1200" y2="44" stroke="#283548" stroke-width="1"/>
+  <circle cx="30" cy="22" r="6" fill="#FB7185"/>
+  <circle cx="52" cy="22" r="6" fill="#818CF8"/>
+  <circle cx="74" cy="22" r="6" fill="#34D399"/>
+  <text x="102" y="27" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="13" font-weight="600" fill="#94A3B8">CaioRen4to/agent-company — Quickstart &amp; Auditoria Reproduzível</text>
+  <text x="1152" y="27" text-anchor="end" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" fill="#34D399">exit 0</text>
+  <text x="48" y="108" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#22D3EE">$ python scripts/init_db.py --db data/missoes.db --seed</text>
+  <text x="48" y="134" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#34D399">[OK] SQLite inicializado de forma idempotente (PRAGMA foreign_keys = ON)</text>
+  <text x="48" y="158" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#FB7185">     PILOTO-CASE-INCOMPLETO-000 -&gt; CONSELHO INCOMPLETO (1 familia)</text>
+  <text x="48" y="182" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#818CF8">     PILOTO-CASE-LOGIN-001      -&gt; REPROVA (2 familias: claude + gemini)</text>
+  <text x="48" y="218" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#22D3EE">$ python scripts/security_scan.py</text>
+  <text x="48" y="244" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#34D399">[OK] Varredura 8/8 aprovada: Estrutura · Comandos · Segredos · Env · Rede · Ofuscacao · Injection · CLI</text>
+  <text x="48" y="280" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#22D3EE">$ python bench/measure_repo.py</text>
+  <text x="48" y="306" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#F1F5F9">[OK] 21 agentes em 7 departamentos (7 GPT/Codex · 8 Gemini · 6 Claude)</text>
+  <text x="48" y="330" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" fill="#34D399">[OK] 8 Core Skills validas (kebab-case) | CHECK + UNIQUE + VIEW Fail-Closed OK</text>
+  <rect x="48" y="352" width="10" height="18" rx="2" fill="#22D3EE"/>
+</svg>

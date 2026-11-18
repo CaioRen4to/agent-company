@@ -17,6 +17,7 @@ Consolida os procedimentos de `code-reviewer`, `python-reviewer`, `fastapi-revie
 - **TypeScript / React:** tipagem estrita (sem `any` silencioso), dependências corretas em hooks, tratamento de estados de carregamento/erro/vazio, acessibilidade (teclado, semântica, ARIA) e prevenção de re-renders desnecessários.
 - **PostgreSQL / Supabase / SQLite:** queries parametrizadas (zero interpolação de strings), chaves estrangeiras (`FOREIGN KEY`), constraints (`CHECK`), índices em FKs e filtros frequentes, políticas RLS quando aplicável e plano de rollback para migrações.
 - **Caça a Falhas Silenciosas (Silent Failure Hunter):** proibir blocos `try/except` ou `.catch()` vazios, retornos `null`/`false` que escondem erro de infraestrutura e fallbacks que mascaram dados corrompidos.
+- **Varredura de 8 Pontos (Skills & Scripts):** antes de aceitar ou instalar novas skills/scripts, rodar `python scripts/security_scan.py` (estrutura/tipos, comandos perigosos, segredos, leitura de `.env`/env, acesso de rede, ofuscação, *prompt injection* e validação CLI).
 
 ## 3. Rubrica de Aceite (Veredito)
 Finalize sempre com um veredito explícito:

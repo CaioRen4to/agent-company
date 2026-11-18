@@ -8,7 +8,7 @@ description: Protocolo de parecer técnico independente inspirado no Conselho do
 Inspirado em `gabrielcoutinhoDL/claude-skill-conselho-dos-ancioes` (licença MIT) e redesenhado para execução nativa com agentes permanentes de famílias distintas (`Conselheiro Claude` e `Conselheiro Gemini`) e governança SQL *Fail-Closed* (`v_validacao_conselho`).
 
 ## 1. Regras para o Conselheiro (Claude / Gemini)
-- Avalie **exclusivamente** o pacote recebido (pedido original, escopo, restrições, versão do artefato e evidências).
+- Avalie **exclusivamente** o pacote recebido (**pedido original do CEO + `diff` real ou artefatos integrais**, restrições e evidências — nunca apenas um resumo opinativo).
 - Primeira rodada cega: não consulte o outro conselheiro nem altere arquivos do projeto.
 - Estruture a resposta obrigatoriamente em:
   1. **Veredito:** `APROVA`, `APROVA COM RESSALVAS`, `REPROVA` ou `INCONCLUSIVO`.
@@ -16,7 +16,8 @@ Inspirado em `gabrielcoutinhoDL/claude-skill-conselho-dos-ancioes` (licença MIT
   3. **Riscos e incertezas:** o que não pôde ser comprovado pelo pacote enviado.
   4. **Condições para aprovação:** critérios objetivos para sanar bloqueios.
 
-## 2. Regras de síntese para o Maestro
+## 2. Regras de síntese para o Maestro (Foco em Divergências)
+- **Divergência e Exclusividade primeiro:** destaque ao CEO onde as duas famílias discordaram ou o que **apenas uma família enxergou** (para expor pontos cegos sem repetir texto redundante).
 - **Convergência:** pontos que ambos os conselheiros apontaram de forma independente.
 - **Complemento exclusivo:** pontos levantados por apenas um modelo (listar separadamente identificando a origem: Claude ou Gemini; exclusividade não é automaticamente conflito).
 - **Conflito real:** quando um aprova e outro reprova a mesma decisão ou propõem caminhos incompatíveis.

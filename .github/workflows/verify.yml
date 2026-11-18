@@ -1,0 +1,33 @@
+name: Verify Agent Company
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  audit-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run 8-point security scan
+        run: python -B scripts/security_scan.py
+
+      - name: Run reproducible benchmark & SQLite Fail-Closed tests
+        run: python -B bench/measure_repo.py
+
+      - name: Smoke-test SQLite initialization & Bash skill installer
+        run: |
+          TMP_DIR="$(mktemp -d)"
+          python -B scripts/init_db.py --db "$TMP_DIR/missoes.db" --seed
+          bash scripts/install.sh "$TMP_DIR/skills"
+          test -f "$TMP_DIR/skills/orquestracao-maestro-ecc/SKILL.md"
+          test -f "$TMP_DIR/skills/mentor-estudo-80-20/SKILL.md"

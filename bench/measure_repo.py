@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "skills" / "mentor-estudo-80-20" / "scripts"))
 from extrair_transcricao import clean_vtt, pick_best_vtt, validate_http_url  # noqa: E402
 from init_db import init_database  # noqa: E402
+from security_scan import run_security_scan  # noqa: E402
 
 
 def parse_frontmatter(skill_md: Path) -> dict[str, str]:
@@ -118,6 +119,10 @@ def main() -> int:
     assert clean_vtt(vtt_sample) == "Olá\nMundo\nOlá"
     assert pick_best_vtt([Path("vid.en.vtt"), Path("vid.pt.vtt")], "pt,pt-BR,en").name == "vid.pt.vtt"
 
+    # 5. Varredura estática de segurança em 8 pontos
+    scan = run_security_scan(ROOT)
+    assert scan["ok"], f"Falha na varredura de segurança: {scan}"
+
     families = {}
     for ag in agents:
         families[ag["model_family"]] = families.get(ag["model_family"], 0) + 1
@@ -128,6 +133,7 @@ def main() -> int:
     print(f"Core Skills válidas (kebab-case): {len(skills_dirs)} ({total_skill_bytes} bytes totais nos SKILL.md)")
     print(f"SQLite VIEW v_validacao_conselho (seed): {rows}")
     print(f"Travas SQLite validadas: {checks}")
+    print(f"Varredura de segurança 8 pontos: {scan['passed']}/{scan['total']} OK ({scan['files_scanned']} arquivos)")
     print("Segurança CLI & VTT do extrair_transcricao.py: OK")
     return 0
 
