@@ -1,0 +1,86 @@
+{
+  "_comment": "Exemplo sanitizado de configuração MCP para economia de contexto e integração segura. Substitua os caminhos <...> pelos do seu ambiente e ative apenas os MCPs necessários em cada agente.",
+  "mcpServers": {
+    "context-mode": {
+      "transport": "stdio",
+      "command": "node",
+      "args": [
+        "<PATH_TO_CONTEXT_MODE_PLUGIN>/server.mjs",
+        "--agent",
+        "claude-code"
+      ],
+      "recommended_agents": [
+        "JARVIS",
+        "Arquiteto",
+        "Pixel",
+        "Bento",
+        "Atlas",
+        "Fluxo",
+        "Sentinela",
+        "Revisor ECC",
+        "Guardião",
+        "Pesquisador",
+        "Pena",
+        "Porteiro",
+        "Mentor de Estudos"
+      ],
+      "purpose": "Sandbox local + FTS5/BM25 para manter logs, diffs, HTML e buscas fora da janela de contexto."
+    },
+    "obsidian": {
+      "transport": "stdio",
+      "command": "node",
+      "args": [
+        "<PATH_TO_OBSIDIAN_MCP>/dist/main.js",
+        "serve",
+        "--vault",
+        "main=<OBSIDIAN_VAULT_PATH>"
+      ],
+      "recommended_agents": [
+        "JARVIS",
+        "Pena",
+        "Pesquisador",
+        "Mentor de Estudos"
+      ],
+      "purpose": "Leitura seletiva (obsidian-triagem) e escrita auditável com read-back (Pena)."
+    },
+    "context7": {
+      "transport": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "recommended_agents": [
+        "Pesquisador",
+        "Arquiteto",
+        "Bento",
+        "Pixel",
+        "Mentor de Estudos"
+      ],
+      "purpose": "Consulta atualizada de documentação oficial de bibliotecas e frameworks."
+    },
+    "github": {
+      "transport": "http",
+      "recommended_agents": [
+        "JARVIS",
+        "Porteiro",
+        "Revisor ECC"
+      ],
+      "purpose": "Inspeção de PRs, issues e releases (push/merge sempre dependem de aprovação do CEO)."
+    },
+    "vercel": {
+      "transport": "http",
+      "url": "https://mcp.vercel.com/",
+      "recommended_agents": [
+        "Pixel",
+        "Porteiro"
+      ],
+      "purpose": "Opcional. Não anexar a agentes que não fazem deploy (evita dezenas de schemas eager por turno)."
+    },
+    "elevenlabs": {
+      "transport": "http",
+      "url": "https://api.elevenlabs.io/v1/mcp",
+      "recommended_agents": [
+        "AI Content Factory",
+        "Publicador"
+      ],
+      "purpose": "Opcional. Anexar somente ao departamento de Mídia para não inflar o prompt dos demais agentes."
+    }
+  }
+}

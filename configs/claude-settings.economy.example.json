@@ -1,0 +1,53 @@
+{
+  "_comment": "Exemplo sanitizado de settings.json para Claude Code focado em economia máxima de tokens e preservação da janela de 5 horas.",
+  "includeCoAuthoredBy": false,
+  "enabledPlugins": {
+    "context-mode@context-mode": true,
+    "ponytail@ponytail": true,
+    "ecc@ecc": true,
+    "context7@anthropic-plugin-directory": true,
+    "security-guidance@anthropic-plugin-directory": true
+  },
+  "extraKnownMarketplaces": {
+    "context-mode": {
+      "source": {
+        "source": "github",
+        "repo": "mksglu/context-mode"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    },
+    "ecc": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/affaan-m/ECC.git"
+      }
+    },
+    "addy-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "addyosmani/agent-skills"
+      }
+    }
+  },
+  "modelSettings": {
+    "claude-sonnet-5-5": {
+      "autoCompactWindow": 150000
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "pluginConfigs": {
+    "ecc@ecc": {
+      "options": {
+        "hooks_enabled": true,
+        "hook_profile": "standard"
+      }
+    }
+  }
+}
