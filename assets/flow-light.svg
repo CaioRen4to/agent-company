@@ -1,0 +1,39 @@
+<svg viewBox="0 0 1200 240" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fluxo operacional Agent Company">
+  <defs>
+    <marker id="m-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 1 L10 5 L0 9 z" fill="#94A3B8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="240" rx="16" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.2"/>
+
+  <g transform="translate(56, 62)">
+    <rect width="232" height="116" rx="12" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.2"/>
+    <text x="22" y="38" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#64748B">01 · ENTRADA</text>
+    <text x="22" y="68" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Pedido do CEO</text>
+    <text x="22" y="92" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#475569">Contexto mínimo</text>
+  </g>
+  <line x1="292" y1="120" x2="334" y2="120" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#m-arr)"/>
+
+  <g transform="translate(340, 62)">
+    <rect width="232" height="116" rx="12" fill="#FFFFFF" stroke="#0891B2" stroke-width="1.2"/>
+    <text x="22" y="38" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#0E7490">02 · MAESTRO</text>
+    <text x="22" y="68" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0F172A">JARVIS (Gemini)</text>
+    <text x="22" y="92" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#475569">Pacote 5 itens · ≤ 2 ciclos</text>
+  </g>
+  <line x1="576" y1="120" x2="618" y2="120" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#m-arr)"/>
+
+  <g transform="translate(624, 62)">
+    <rect width="232" height="116" rx="12" fill="#FFFFFF" stroke="#4F46E5" stroke-width="1.2"/>
+    <text x="22" y="38" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#4338CA">03 · CONSELHO CEGO</text>
+    <text x="22" y="68" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Claude × Gemini</text>
+    <text x="22" y="92" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#475569">SQLite Fail-Closed</text>
+  </g>
+  <line x1="860" y1="120" x2="902" y2="120" stroke="#94A3B8" stroke-width="1.6" marker-end="url(#m-arr)"/>
+
+  <g transform="translate(908, 62)">
+    <rect width="236" height="116" rx="12" fill="#FFFFFF" stroke="#059669" stroke-width="1.2"/>
+    <text x="22" y="38" font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11.5" fill="#047857">04 · EXECUÇÃO</text>
+    <text x="22" y="68" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Camadas + Auditoria</text>
+    <text x="22" y="92" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#475569">Escopo isolado · Scan 8/8</text>
+  </g>
+</svg>

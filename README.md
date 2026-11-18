@@ -1,18 +1,32 @@
 <a id="top"></a>
 
-# Agent Company
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
+    <img src="assets/hero-dark.svg" alt="Agent Company" width="100%">
+  </picture>
+</p>
 
-> **Arquitetura multiagente com 21 especialistas, 8 Core Skills, estudo ativo 80/20, economia de tokens e governança SQLite *Fail-Closed* (`GPT · Gemini · Claude`).**
+<p align="center">
+  <a href="https://github.com/CaioRen4to/agent-company/actions/workflows/verify.yml"><img src="https://github.com/CaioRen4to/agent-company/actions/workflows/verify.yml/badge.svg" alt="Verify Agent Company"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-6366F1.svg?style=flat-square" alt="License: MIT"></a>
+  <a href="agents/roster.json"><img src="https://img.shields.io/badge/Agentes-21_em_7_Depts-06B6D4.svg?style=flat-square" alt="21 Agentes"></a>
+  <a href="#estrutura-e-skills"><img src="https://img.shields.io/badge/Core_Skills-8_kebab--case-10B981.svg?style=flat-square" alt="8 Core Skills"></a>
+  <a href="scripts/security_scan.py"><img src="https://img.shields.io/badge/Security_Scan-8%2F8_Checks-10B981.svg?style=flat-square" alt="8/8 Security Scan"></a>
+  <a href="sql/schema-missoes.sql"><img src="https://img.shields.io/badge/SQLite_View-Fail_Closed-F43F5E.svg?style=flat-square" alt="SQLite Fail-Closed"></a>
+  <a href="https://caioren4to.github.io/agent-company/"><img src="https://img.shields.io/badge/Portal_Web-GitHub_Pages-6366F1.svg?style=flat-square" alt="Portal Interativo"></a>
+</p>
 
-[![Verify Agent Company](https://github.com/CaioRen4to/agent-company/actions/workflows/verify.yml/badge.svg)](https://github.com/CaioRen4to/agent-company/actions/workflows/verify.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-6366F1.svg?style=flat-square)](LICENSE)
-[![Agentes](https://img.shields.io/badge/Agentes-21_em_7_Depts-06B6D4.svg?style=flat-square)](agents/roster.json)
-[![Core Skills](https://img.shields.io/badge/Core_Skills-8_kebab--case-10B981.svg?style=flat-square)](#estrutura-e-skills)
-[![Security Scan](https://img.shields.io/badge/Security_Scan-8%2F8_Checks-10B981.svg?style=flat-square)](scripts/security_scan.py)
-[![SQLite Fail-Closed](https://img.shields.io/badge/SQLite_View-Fail_Closed-F43F5E.svg?style=flat-square)](sql/schema-missoes.sql)
-[![Portal Interativo](https://img.shields.io/badge/Portal_Web-GitHub_Pages-6366F1.svg?style=flat-square)](https://caioren4to.github.io/agent-company/)
-
-[English TL;DR](#english-tldr) · [Como Funciona](#arquitetura) · [21 Agentes](#agentes) · [Conselho Cego](#estudo-caso) · [Segurança 8/8](#seguranca) · [Quickstart](#quickstart) · [Portal Interativo](https://caioren4to.github.io/agent-company/)
+<p align="center">
+  <a href="#english-tldr">English TL;DR</a> ·
+  <a href="#arquitetura">Como Funciona</a> ·
+  <a href="#agentes">21 Agentes</a> ·
+  <a href="#estudo-caso">Conselho Cego</a> ·
+  <a href="#seguranca">Segurança 8/8</a> ·
+  <a href="#quickstart">Quickstart</a> ·
+  <a href="https://caioren4to.github.io/agent-company/">Portal Interativo</a>
+</p>
 
 ---
 
@@ -39,6 +53,17 @@ Em vez de pedir tudo para um único agente genérico, o **Agent Company** divide
 2. **Camadas isoladas na engenharia:** `Pixel` só altera Frontend; `Bento` só altera Backend; `Atlas` só altera SQL/Dados; `Fluxo` só altera Automações. Retrabalho é travado em no máximo **2 ciclos**.
 3. **Revisão cruzada e Conselho Cego (*Fail-Closed*):** decisões críticas passam por dois modelos de famílias diferentes (`Claude` × `Gemini`) sem que um veja a resposta do outro. No SQLite, a view `v_validacao_conselho` bloqueia como **`CONSELHO INCOMPLETO`** qualquer rodada com 0 ou 1 parecer.
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/flow-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/flow-light.svg">
+    <img src="assets/flow-dark.svg" alt="Fluxo operacional da Agent Company em 4 passos" width="100%">
+  </picture>
+</p>
+
+<details>
+<summary><b>Ver diagrama Mermaid dos 7 departamentos</b></summary>
+
 ```mermaid
 flowchart TD
     CEO["Caio Renato — CEO"] --> J["JARVIS — Maestro<br/>(Google Gemini Pro)"]
@@ -51,6 +76,8 @@ flowchart TD
     J --> O["Operações (2 Agentes)<br/>Pena (Obsidian) · Porteiro (Release)"]
     J --> S["Estudos (1 Agente)<br/>Mentor de Estudos (80/20 & Active Recall)"]
 ```
+
+</details>
 
 > [!IMPORTANT]
 > **Trava de Segurança:** nenhum agente executa `git push`, deploy, postagem pública, envio de mensagens ou pagamentos sem aprovação explícita do usuário/CEO vinculada à versão avaliada.
@@ -212,6 +239,9 @@ agent-company/
 ├── agents/
 │   ├── roster.json                                        # Manifesto dos 21 agentes em 7 departamentos
 │   └── prompts-especialistas.md                           # Briefings reutilizáveis dos 21 papéis
+├── assets/
+│   ├── hero-dark.svg / hero-light.svg                     # Banner minimalista Dark/Light
+│   └── flow-dark.svg / flow-light.svg                     # Fluxo minimalista em 4 etapas Dark/Light
 ├── bench/
 │   └── measure_repo.py                                    # Auditoria reproduzível de skills, roster, SQLite e segurança
 ├── configs/
