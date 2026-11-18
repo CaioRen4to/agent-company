@@ -308,7 +308,7 @@ agent-company/
 
 ## 9. Créditos e Referências
 - **Autor e Arquiteto:** [Caio Renato (`@CaioRen4to`)](https://github.com/CaioRen4to)
-- **Licenças e Projetos Base:** consulte [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) para atribuições completas ao **ECC (*Everything Claude Code*)** e a [`gabrielcoutinhoDL/claude-skill-conselho-dos-ancioes`](https://github.com/gabrielcoutinhoDL/claude-skill-conselho-dos-ancioes).
+- **Licenças e Projetos Base:** consulte [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) para atribuições completas ao **ECC (*Everything Claude Code*)** 
 - **Literatura sobre *Self-Preference Bias* em LLMs:** Wataoka et al. (2024), *"Self-Preference Bias in LLM-as-a-Judge"*; Panickssery et al. (2024), *"LLM Evaluators Recognize and Favor Their Own Generations"*.
 
 <p align="center">
