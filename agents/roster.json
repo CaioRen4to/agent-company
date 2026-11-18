@@ -1,6 +1,6 @@
 {
-  "architecture": "JARVIS Agent Company",
-  "version": "2.2.0",
+  "architecture": "Agent Company",
+  "version": "2.3.0",
   "distribution": {
     "GPT (OpenAI)": 7,
     "Gemini (Google)": 8,

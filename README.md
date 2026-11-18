@@ -1,71 +1,43 @@
 <a id="top"></a>
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
-    <img src="assets/hero-dark.svg" alt="JARVIS Agent Company — Orquestração Multiagente Multi-Família" width="100%">
-  </picture>
-</p>
+# Agent Company
 
-<p align="center">
-  <a href="https://github.com/CaioRen4to/agent-company/actions/workflows/verify.yml"><img src="https://github.com/CaioRen4to/agent-company/actions/workflows/verify.yml/badge.svg" alt="Verify Agent Company"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-6366F1.svg?style=flat-square" alt="License: MIT"></a>
-  <a href="agents/roster.json"><img src="https://img.shields.io/badge/Agentes-21_em_7_Depts-06B6D4.svg?style=flat-square" alt="21 Agentes"></a>
-  <a href="#estrutura-e-skills"><img src="https://img.shields.io/badge/Core_Skills-8_kebab--case-10B981.svg?style=flat-square" alt="8 Core Skills"></a>
-  <a href="scripts/security_scan.py"><img src="https://img.shields.io/badge/Security_Scan-8%2F8_Checks-10B981.svg?style=flat-square" alt="8/8 Security Scan"></a>
-  <a href="sql/schema-missoes.sql"><img src="https://img.shields.io/badge/SQLite_View-Fail_Closed-F43F5E.svg?style=flat-square" alt="SQLite Fail-Closed"></a>
-  <a href="https://caioren4to.github.io/agent-company/"><img src="https://img.shields.io/badge/Portal_Interativo-GitHub_Pages-6366F1.svg?style=flat-square" alt="Portal Interativo"></a>
-</p>
+> **Arquitetura multiagente com 21 especialistas, 8 Core Skills, estudo ativo 80/20, economia de tokens e governança SQLite *Fail-Closed* (`GPT · Gemini · Claude`).**
 
-<p align="center">
-  <a href="#english-tldr">English TL;DR</a> ·
-  <a href="#arquitetura">Arquitetura</a> ·
-  <a href="#estudo-caso">Conselho Cego</a> ·
-  <a href="#agentes">21 Agentes</a> ·
-  <a href="#seguranca-e-bench">Segurança 8/8 &amp; Bench</a> ·
-  <a href="#comparativos">Comparativo</a> ·
-  <a href="#quickstart">Quickstart</a> ·
-  <a href="https://caioren4to.github.io/agent-company/">Portal Web</a>
-</p>
+[![Verify Agent Company](https://github.com/CaioRen4to/agent-company/actions/workflows/verify.yml/badge.svg)](https://github.com/CaioRen4to/agent-company/actions/workflows/verify.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-6366F1.svg?style=flat-square)](LICENSE)
+[![Agentes](https://img.shields.io/badge/Agentes-21_em_7_Depts-06B6D4.svg?style=flat-square)](agents/roster.json)
+[![Core Skills](https://img.shields.io/badge/Core_Skills-8_kebab--case-10B981.svg?style=flat-square)](#estrutura-e-skills)
+[![Security Scan](https://img.shields.io/badge/Security_Scan-8%2F8_Checks-10B981.svg?style=flat-square)](scripts/security_scan.py)
+[![SQLite Fail-Closed](https://img.shields.io/badge/SQLite_View-Fail_Closed-F43F5E.svg?style=flat-square)](sql/schema-missoes.sql)
+[![Portal Interativo](https://img.shields.io/badge/Portal_Web-GitHub_Pages-6366F1.svg?style=flat-square)](https://caioren4to.github.io/agent-company/)
+
+[English TL;DR](#english-tldr) · [Como Funciona](#arquitetura) · [21 Agentes](#agentes) · [Conselho Cego](#estudo-caso) · [Segurança 8/8](#seguranca) · [Quickstart](#quickstart) · [Portal Interativo](https://caioren4to.github.io/agent-company/)
 
 ---
 
 <a id="english-tldr"></a>
 ## English Summary (TL;DR)
 
-**JARVIS Agent Company** is a practical multi-agent orchestration architecture designed for Software & AI Engineers who want **cross-model checks and balances** instead of a single monolithic prompt:
+**Agent Company** is an open-source multi-agent operating architecture for Software & AI Engineers built around **cross-model checks and balances** instead of a single monolithic prompt:
 - **21 permanent agents across 7 departments** (`Direction`, `Independent Council`, `Engineering`, `Business`, `Media`, `Operations`, and `Active Study 80/20`).
-- **Multi-family routing (`7 OpenAI GPT/Codex · 8 Google Gemini · 6 Anthropic Claude`):** code written by GPT specialists is reviewed by Claude auditors (`Revisor ECC` & `Guardião`) to mitigate *self-preference bias* (Wataoka et al., 2024; Panickssery et al., 2024).
+- **Multi-family routing (`7 OpenAI GPT/Codex · 8 Google Gemini · 6 Anthropic Claude`):** code written by GPT specialists is audited by Claude reviewers (`Revisor ECC` & `Guardião`) to reduce *self-preference bias* (Wataoka et al., 2024; Panickssery et al., 2024).
 - **Blind Independent Council (`Fail-Closed`):** critical decisions go simultaneously to two distinct model families (`original request + real diff`) in a blind 1st round; an SQL view (`v_validacao_conselho`) marks any round with fewer than 2 distinct families as `CONSELHO INCOMPLETO`.
-- **8-Point Static Security Scan & Reproducible Benchmark:** automated CLI checks in [`scripts/security_scan.py`](scripts/security_scan.py) and [`bench/measure_repo.py`](bench/measure_repo.py) run locally and on GitHub Actions CI before installing any skill.
-- **Interactive Portal (GitHub Pages):** filter all 21 agents, simulate the `Fail-Closed` SQLite rule, and copy quickstart commands in [`docs/index.html`](docs/index.html).
+- **8-Point Security Scan & Reproducible Audit:** [`scripts/security_scan.py`](scripts/security_scan.py) and [`bench/measure_repo.py`](bench/measure_repo.py) verify skills, CLI safety, and SQLite invariants locally and in GitHub Actions CI.
+- **Static Web Explorer:** filter all 21 agents and simulate the SQLite *Fail-Closed* view in [`docs/index.html`](docs/index.html).
 
 > **Suggested GitHub Topics:** `multi-agent-systems` · `ai-agents` · `llm-orchestration` · `claude-code` · `gemini` · `codex` · `sqlite` · `obsidian`
 
 ---
 
 <a id="arquitetura"></a>
-## 1. Visão Geral da Arquitetura
+## 1. Como Funciona (Visão Geral)
 
-Sistemas com agentes de IA costumam perder confiabilidade em projetos reais por três falhas estruturais:
-1. **Monocultura de modelo (*Self-Preference Bias*):** quando o mesmo modelo planeja, escreve o código e aprova a revisão, ele tende a favorecer seu próprio estilo e repetir pontos cegos.
-2. **Explosão de contexto:** carregar prompts gigantescos e logs brutos em um único agente degrada atenção e estoura cotas (como a janela de 5 horas).
-3. **Estado operacional ilusório:** confundir um agente disponível (`ready`) com uma missão concluída e validada.
+Em vez de pedir tudo para um único agente genérico, o **Agent Company** divide o trabalho como uma empresa enxuta:
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/architecture-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/architecture-light.svg">
-    <img src="assets/architecture-dark.svg" alt="Mapa Arquitetural da JARVIS Agent Company" width="100%">
-  </picture>
-</p>
-
-> [!IMPORTANT]
-> **Trava *Fail-Closed* e Escopo Isolado:** nenhuma camada edita arquivos fora do seu domínio (`Pixel` = Frontend, `Bento` = Backend, `Atlas` = SQL/Dados, `Fluxo` = Automações), ciclos de correção são limitados a **2 rodadas**, e decisões críticas exigem **2 famílias distintas** na view SQLite `v_validacao_conselho` — com 0 ou 1 parecer, o status permanece **`CONSELHO INCOMPLETO`**.
-
-<details>
-<summary><b>Ver diagrama Mermaid em texto (alternativa acessível para leitores/parsers)</b></summary>
+1. **Um ponto de entrada (`JARVIS — Maestro`):** recebe o pedido, consulta o contexto mínimo e delega em um pacote claro de 5 itens (objetivo, diretório/revisão, restrições, arquivos permitidos e critérios de aceite).
+2. **Camadas isoladas na engenharia:** `Pixel` só altera Frontend; `Bento` só altera Backend; `Atlas` só altera SQL/Dados; `Fluxo` só altera Automações. Retrabalho é travado em no máximo **2 ciclos**.
+3. **Revisão cruzada e Conselho Cego (*Fail-Closed*):** decisões críticas passam por dois modelos de famílias diferentes (`Claude` × `Gemini`) sem que um veja a resposta do outro. No SQLite, a view `v_validacao_conselho` bloqueia como **`CONSELHO INCOMPLETO`** qualquer rodada com 0 ou 1 parecer.
 
 ```mermaid
 flowchart TD
@@ -74,46 +46,47 @@ flowchart TD
     J <--> C["Conselho Independente (1ª Rodada Cega)<br/>Conselheiro Claude (Opus) + Conselheiro Gemini (Pro)"]
 
     J --> E["Engenharia (8 Agentes)<br/>Arquiteto · Pixel · Bento · Atlas<br/>Fluxo · Sentinela · Revisor ECC · Guardião"]
-    J --> N["Negócios (5 Agentes)<br/>Pesquisador · Produto e Negócios<br/>Marketing · Comercial · Financeiro"]
-    J --> M["Mídia & Publicação (2 Agentes)<br/>AI Content Factory · Publicador"]
-    J --> O["Operações & Memória (2 Agentes)<br/>Pena (Obsidian) · Porteiro (Release)"]
-    J --> S["Estudos & Carreira (1 Agente)<br/>Mentor de Estudos (80/20 & Active Recall)"]
+    J --> N["Negócios (5 Agentes)<br/>Pesquisador · Produto · Marketing<br/>Comercial · Financeiro"]
+    J --> M["Mídia (2 Agentes)<br/>AI Content Factory · Publicador"]
+    J --> O["Operações (2 Agentes)<br/>Pena (Obsidian) · Porteiro (Release)"]
+    J --> S["Estudos (1 Agente)<br/>Mentor de Estudos (80/20 & Active Recall)"]
 ```
 
-</details>
+> [!IMPORTANT]
+> **Trava de Segurança:** nenhum agente executa `git push`, deploy, postagem pública, envio de mensagens ou pagamentos sem aprovação explícita do usuário/CEO vinculada à versão avaliada.
 
 ---
 
 <a id="multi-familia"></a>
-## 2. Roteamento Multi-Família e Revisão Cruzada (`7 GPT · 8 Gemini · 6 Claude`)
+## 2. Roteamento Multi-Família (`7 GPT · 8 Gemini · 6 Claude`)
 
-Em vez de concentrar tudo em um provedor, cada agente é alocado à família mais aderente ao seu tipo de tarefa, com **revisão cruzada obrigatória** na engenharia:
+Cada agente roda na família de modelo mais adequada ao seu trabalho, garantindo independência entre quem constrói e quem audita:
 
-- **Construção de Backend, SQL, Integrações e Testes (`Arquiteto`, `Bento`, `Atlas`, `Fluxo`, `Sentinela`):** família **OpenAI GPT / Codex**.
-- **Auditoria Cruzada de Código e Segurança (`Revisor ECC` e `Guardião`):** família **Anthropic Claude (Sonnet)** — quem audita Backend, SQL e Automações pertence a uma família de pesos diferente de quem implementou.
-- **Frontend (`Pixel`):** família **Anthropic Claude (Sonnet)** — para alterações críticas de UI ou segurança *client-side* que exijam independência de família, o Maestro aciona `Sentinela` (`GPT/Codex`) ou o `Conselho Independente` (`Claude` × `Gemini`).
-- **Orquestração Long-Context, Pesquisa, Copywriting, Memória e Ensino 80/20 (`JARVIS`, `Pesquisador`, `Marketing`, `Comercial`, `Publicador`, `Pena`, `Mentor de Estudos`):** família **Google Gemini (Pro / Flash)**.
+- **Construção de Backend, SQL, Automações e Testes (`Arquiteto`, `Bento`, `Atlas`, `Fluxo`, `Sentinela`):** **OpenAI GPT / Codex**.
+- **Auditoria Cruzada de Código e Segurança (`Revisor ECC` e `Guardião`):** **Anthropic Claude (`Sonnet`)** — família distinta de quem implementou Backend, SQL e Automações.
+- **Frontend (`Pixel`):** **Anthropic Claude (`Sonnet`)** — para UI crítica ou segurança *client-side*, o Maestro aciona `Sentinela` (`GPT/Codex`) ou o `Conselho Independente` (`Claude` × `Gemini`).
+- **Orquestração, Pesquisa, Memória, Mídia/Copy e Ensino 80/20 (`JARVIS`, `Pesquisador`, `Marketing`, `Comercial`, `Publicador`, `Pena`, `Mentor de Estudos`):** **Google Gemini (`Pro / Flash`)**.
 
 > [!TIP]
-> **Economia máxima de tokens (janela de 5h):** use o guia [`docs/stack-plugins-mcps-economia.md`](docs/stack-plugins-mcps-economia.md) e os perfis em [`configs/`](configs/) para combinar `Context Mode` (FTS5/BM25 em sandbox), `Ponytail` (diffs mínimos), `Graphify` (grafo de código) e `obsidian-triagem` (leitura seletiva sem despejar o cofre inteiro).
+> **Economia máxima de tokens (janela de 5 horas):** veja [`docs/stack-plugins-mcps-economia.md`](docs/stack-plugins-mcps-economia.md) e os templates em [`configs/`](configs/) para combinar `Context Mode` (FTS5/BM25 em sandbox), `Ponytail` (diffs mínimos), `Graphify` (grafo de código) e `obsidian-triagem` (leitura seletiva).
 
 ---
 
 <a id="agentes"></a>
-## 3. Quadro Completo dos 21 Agentes Permanentes
+## 3. Os 21 Agentes Permanentes
 
-| Departamento | Qtd | Agentes | Famílias Dominantes | Escopo de Escrita |
-|---|---:|---|---|---|
-| **Direção** | 1 | `JARVIS (Maestro)` | Gemini (`Pro`) | Coordenação por pacote de 5 itens, máx. 2 ciclos e síntese ao CEO |
-| **Conselho** | 2 | `Conselheiro Claude`, `Conselheiro Gemini` | Claude (`Opus`) × Gemini (`Pro`) | Somente leitura — pareceres cegos sobre pedido original + `diff` real |
-| **Engenharia** | 8 | `Arquiteto`, `Pixel`, `Bento`, `Atlas`, `Fluxo`, `Sentinela`, `Revisor ECC`, `Guardião` | GPT/Codex (5) + Claude (3) | Isolado por camada + revisão cruzada e AppSec |
-| **Negócios** | 5 | `Pesquisador`, `Produto e Negócios`, `Marketing`, `Comercial`, `Financeiro` | Gemini (3) + Claude (1) + GPT (1) | PRD, pesquisa, rascunhos e ROI (zero envio externo ou gasto sem CEO) |
-| **Mídia** | 2 | `AI Content Factory`, `Publicador` | Claude (`Opus`) + Gemini (`Flash`) | Vídeo 3D local + publicação somente com aprovação do CEO |
-| **Operações** | 2 | `Pena`, `Porteiro` | Gemini (`Flash`) + GPT (`Fast CLI`) | Memória Obsidian com *read-back* + checks finais de release |
-| **Estudos** | 1 | `Mentor de Estudos` | Gemini (`Pro`) | Revisão didática, síntese 80/20 de vídeos longos e *Active Recall* |
+| Departamento | Qtd | Agentes | Escopo Principal |
+|---|---:|---|---|
+| **Direção** | 1 | `JARVIS (Maestro)` | Recebe a missão, delega em 5 itens, limita retrabalho a 2 ciclos e consolida evidências. |
+| **Conselho** | 2 | `Conselheiro Claude`, `Conselheiro Gemini` | Pareceres cegos independentes (`pedido original + diff real`), somente leitura. |
+| **Engenharia** | 8 | `Arquiteto`, `Pixel`, `Bento`, `Atlas`, `Fluxo`, `Sentinela`, `Revisor ECC`, `Guardião` | Planejamento, código isolado por camada, testes e auditoria cruzada AppSec. |
+| **Negócios** | 5 | `Pesquisador`, `Produto e Negócios`, `Marketing`, `Comercial`, `Financeiro` | Documentação oficial, PRD, copy, propostas e ROI (sem envios/gastos autônomos). |
+| **Mídia** | 2 | `AI Content Factory`, `Publicador` | Pipeline local de vídeo 3D narrado e agendamento sob confirmação do CEO. |
+| **Operações** | 2 | `Pena`, `Porteiro` | Memória auditável no Obsidian com *read-back* + checks finais de release. |
+| **Estudos** | 1 | `Mentor de Estudos` | Revisão didática de código, síntese 80/20 de vídeos longos e *Active Recall*. |
 
 <details>
-<summary><b>Abrir tabela detalhada dos 21 agentes (papéis consolidados, tiers públicos e limites)</b></summary>
+<summary><b>Ver lista completa dos 21 agentes (família, papéis consolidados e limite de escrita)</b></summary>
 
 | # | Departamento | Agente | Família / Tier Público | Papéis Consolidados | Responsabilidade e Limite de Escrita |
 |---|---|---|---|---|---|
@@ -144,136 +117,101 @@ Em vez de concentrar tudo em um provedor, cada agente é alocado à família mai
 ---
 
 <a id="estudo-caso"></a>
-## 4. Conselho Independente Cego & Estudo de Caso Real
+## 4. Conselho Cego (`Claude × Gemini`) & Estudo de Caso Real
 
-Em decisões críticas de arquitetura, segurança, autenticação ou migrações, os dois conselheiros recebem **o pedido original do CEO + o `diff` real** sem ver a resposta um do outro; na síntese, o Maestro destaca **divergências e achados exclusivos primeiro** para eliminar ponto cego com leitura mínima.
+1. **Entrada padronizada:** os dois conselheiros recebem o **pedido original do CEO + o `diff` real**, sem ver a opinião do Maestro.
+2. **Auditoria cega simultânea:** nenhum modelo lê a resposta do outro na 1ª rodada.
+3. **Síntese por divergências + trava SQLite:** o Maestro destaca primeiro onde divergiram ou o que só uma família viu, e a view `v_validacao_conselho` exige 2 famílias distintas.
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/blind-council-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/blind-council-light.svg">
-    <img src="assets/blind-council-dark.svg" alt="Estudo de caso do Conselho Cego: Claude vs Gemini" width="100%">
-  </picture>
-</p>
-
-Todos os artefatos completos estão em [`examples/case-study-login-ratelimit/`](examples/case-study-login-ratelimit/):
-- [`prompt-rodada-cega.md`](examples/case-study-login-ratelimit/prompt-rodada-cega.md) — pacote enviado sem revelar preferência do Maestro;
-- [`parecer-claude.md`](examples/case-study-login-ratelimit/parecer-claude.md) e [`parecer-gemini.md`](examples/case-study-login-ratelimit/parecer-gemini.md) — pareceres independentes anonimizados;
-- [`seed-case-study.sql`](examples/case-study-login-ratelimit/seed-case-study.sql) — seed SQLite que demonstra o bloqueio `CONSELHO INCOMPLETO` (1 parecer) e a convergência `REPROVA` (2 famílias).
+**Exemplo real no repositório ([`examples/case-study-login-ratelimit/`](examples/case-study-login-ratelimit/)) — proposta de elevar o limite de tentativas de login de 5 para 10:**
+- **Convergência (`REPROVA`):** ambas as famílias apontaram falta de escopo do contador (IP vs. conta), janela temporal, política de bloqueio, controles compensatórios (*backoff*/CAPTCHA) e logs/alertas.
+- **Exclusivo Claude ([`parecer-claude.md`](examples/case-study-login-ratelimit/parecer-claude.md)):** exigiu checagem contra senhas vazadas (*HIBP*), MFA obrigatório para administradores e testes automatizados.
+- **Exclusivo Gemini ([`parecer-gemini.md`](examples/case-study-login-ratelimit/parecer-gemini.md)):** alertou para **Account Lockout DoS** (travamento malicioso de contas de terceiros) sem fluxo seguro de desbloqueio próprio.
+- **Trava SQLite ([`seed-case-study.sql`](examples/case-study-login-ratelimit/seed-case-study.sql)):** demonstra `CONSELHO INCOMPLETO` com 1 parecer e `REPROVA` quando as 2 famílias respondem.
 
 ---
 
-<a id="seguranca-e-bench"></a>
-## 5. Varredura de Segurança em 8 Pontos & Demo de Terminal
+<a id="seguranca"></a>
+## 5. Varredura de Segurança em 8 Pontos & Comparativo
 
-Antes de instalar ou distribuir qualquer skill/script, [`scripts/security_scan.py`](scripts/security_scan.py) e [`bench/measure_repo.py`](bench/measure_repo.py) auditam o repositório inteiro automaticamente (localmente e no CI do GitHub):
+Antes de instalar ou distribuir qualquer skill/script, [`scripts/security_scan.py`](scripts/security_scan.py) verifica automaticamente todo o repositório (localmente e no CI do GitHub):
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/terminal-demo-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/terminal-demo-light.svg">
-    <img src="assets/terminal-demo-dark.svg" alt="Saída real de inicialização, security scan 8/8 e benchmark" width="100%">
-  </picture>
-</p>
+1. **Estrutura e tipos de arquivo** (sem binários ocultos);
+2. **Comandos perigosos** (`shell=True`, `os.system`, `Invoke-Expression`, pipes remotos);
+3. **Segredos no código** (`sk-`, `ghp_`, `ghu_`, `AIza`, chaves PEM);
+4. **Leitura de variáveis de ambiente** dentro de `skills/` e `scripts/`;
+5. **Acesso de rede não declarado** em scripts;
+6. **Código ofuscado** (`base64 | sh`, `eval(compile(...))`);
+7. **Prompt injection e Unicode oculto** em `SKILL.md`;
+8. **Integridade CLI** (trava `--` + validação `http(s)` em `extrair_transcricao.py`).
 
-1. **Estrutura e tipos de arquivo** — bloqueia binários ocultos ou extensões inesperadas.
-2. **Comandos perigosos** — detecta `shell=True`, `os.system`, `Invoke-Expression` e pipes remotos para shell.
-3. **Segredos no código** — procura prefixos de chaves (`sk-`, `ghp_`, `ghu_`, `AIza`, chaves PEM).
-4. **Variáveis de ambiente** — sinaliza leituras diretas de `os.environ`/`$env:` dentro de `skills/` e `scripts/`.
-5. **Acesso de rede em scripts** — audita chamadas HTTP não declaradas em `skills/` e `scripts/`.
-6. **Código ofuscado** — bloqueia payloads `base64 | sh` e `eval(compile(...))`.
-7. **Prompt injection & Unicode oculto** — detecta tentativas de override em `SKILL.md` e caracteres zero-width/bidi.
-8. **Integridade CLI** — valida a trava `--` + checagem `http(s)` em `extrair_transcricao.py` e ausência de traversal `../`.
+### Comparativo Técnico
 
----
-
-<a id="comparativos"></a>
-## 6. Comparativo Técnico e Evidências Reproduzíveis
-
-### 6.1 O que este Repositório Entrega vs. Integrações Externas do Ambiente
-
-| Capacidade | Agente Único | Skill de Conselho (CLI) | JARVIS Agent Company (Neste Repo) | Camada de Runtime / MCP Externa (Opcional) |
+| Capacidade | Agente Único | Skill de Conselho (CLI) | Agent Company (Neste Repo) | Camada Externa Opcional |
 |---|:---:|:---:|:---:|:---|
-| Pacote formal de delegação em 5 itens + limite de 2 ciclos | — | — | ✓ (`orquestracao-maestro-ecc`) | Orquestrador (`OpenBot`, `Claude Code`, `Cursor`) |
-| Manifesto de 21 papéis com isolamento por camada | — | — | ✓ (`agents/roster.json`) | Perfis configurados no runtime escolhido |
-| Revisão cruzada no Backend/SQL/Automações | — | — | ✓ (`Revisor ECC`, `Guardião`) | Provedores `GPT` + `Claude` + `Gemini` |
-| Conselho cego (`pedido + diff`, saída por divergências) + *Fail-Closed* | — | ✓ *(sem SQL view)* | ✓ (`sql/schema-missoes.sql`) | `Conselheiro Claude` + `Conselheiro Gemini` |
-| Varredura estática de segurança em 8 pontos (Skills & Scripts) | — | — | ✓ (`scripts/security_scan.py`) | GitHub Actions CI (`.github/workflows/verify.yml`) |
-| Portal web interativo para explorar agentes e simular SQLite | — | — | ✓ (`docs/index.html`) | GitHub Pages (`/docs`) |
-| Ensino ativo 80/20 (vídeos longos + *Active Recall*) | — | — | ✓ (`mentor-estudo-80-20`) | `yt-dlp` (opcional para legendas de vídeo) |
-| Economia de contexto via Sandbox FTS5/BM25, diffs mínimos e Grafo | — | — | ✓ *(templates em `configs/` e `docs/`)* | `Context Mode` MCP + `Ponytail` + `Graphify` |
-| Memória seletiva e auditável com *read-back* | — | — | ✓ (`obsidian-triagem` + `memoria-auditavel-obsidian-pena`) | Cofre Markdown + `Obsidian MCP` |
-
-### 6.2 Métricas Reproduzíveis vs. Observações de Implantação
-
-- **Verificações reproduzíveis localmente (`python bench/measure_repo.py`):**
-  - `21` agentes validados em `7` departamentos (`7 OpenAI GPT/Codex · 8 Google Gemini · 6 Anthropic Claude`);
-  - `8` *Core Skills* válidas em `kebab-case` (pasta idêntica ao `name:` do frontmatter);
-  - `8/8` checks aprovados em `scripts/security_scan.py` em todos os arquivos do repositório;
-  - View SQL `v_validacao_conselho` retornando `CONSELHO INCOMPLETO` para 0 ou 1 parecer e `REPROVA` quando as 2 famílias respondem no caso piloto, além de travas `CHECK` e `UNIQUE` validadas com `sqlite3.IntegrityError`.
-- **Observações de uso no ambiente de produção local (não generalizadas como benchmark universal):**
-  - Consolidação de `55` definições anteriores de prompts/subagentes (`34` globais ECC + `7` variantes locais + `14` subagentes de vídeo 3D) em `21` papéis permanentes com carregamento sob demanda via skills.
-  - Em leituras de árvore de interface via `cua-driver`, consultas filtradas por `query`/`since` reduziram leituras completas de ~42 KB para ~2 KB na observação local do driver.
+| Delegação em 5 itens + limite de 2 ciclos | — | — | ✓ (`orquestracao-maestro-ecc`) | `OpenBot`, `Claude Code`, `Cursor` |
+| Manifesto de 21 papéis com isolamento por camada | — | — | ✓ (`agents/roster.json`) | Perfis do runtime escolhido |
+| Revisão cruzada entre famílias (`GPT` × `Claude`) | — | — | ✓ (`Revisor ECC`, `Guardião`) | Provedores `GPT` + `Claude` + `Gemini` |
+| Conselho cego + regra *Fail-Closed* (`CONSELHO INCOMPLETO`) | — | ✓ *(sem SQL view)* | ✓ (`sql/schema-missoes.sql`) | `Conselheiro Claude` + `Conselheiro Gemini` |
+| Varredura estática de segurança em 8 pontos | — | — | ✓ (`scripts/security_scan.py`) | GitHub Actions CI |
+| Portal web para explorar agentes e simular SQLite | — | — | ✓ (`docs/index.html`) | GitHub Pages (`/docs`) |
+| Ensino ativo 80/20 para vídeos longos | — | — | ✓ (`mentor-estudo-80-20`) | `yt-dlp` (opcional) |
+| Economia de contexto, diffs mínimos e memória auditável | — | — | ✓ (`configs/`, `docs/`, `skills/`) | `Context Mode`, `Ponytail`, `Graphify`, `Obsidian MCP` |
 
 ---
 
 <a id="quickstart"></a>
-## 7. Quickstart & Portabilidade (`OpenBot`, `Claude Code`, `Cursor`, `Antigravity`)
+## 6. Quickstart (Copiar e Rodar)
 
 ### Pré-requisitos
-- **Python 3.9+** (necessário para `scripts/init_db.py`, `scripts/security_scan.py`, `bench/measure_repo.py` e `extrair_transcricao.py`).
-- **`yt-dlp`** (opcional, exigido apenas no fluxo 7.3 para extrair legendas públicas de vídeos).
-- **Nota sobre SQLite (`PRAGMA foreign_keys`):** `scripts/init_db.py` já aplica `PRAGMA foreign_keys = ON;`, mas ao abrir `data/missoes.db` em clientes externos (`sqlite3`, DBeaver, DB Browser), execute `PRAGMA foreign_keys = ON;` na sessão.
+- **Python 3.9+** (para `init_db.py`, `security_scan.py`, `measure_repo.py` e `extrair_transcricao.py`).
+- **`yt-dlp`** (opcional, apenas para baixar legendas públicas de vídeos no fluxo 6.3).
+- **SQLite `PRAGMA foreign_keys`:** `scripts/init_db.py` ativa `PRAGMA foreign_keys = ON;`; se abrir `data/missoes.db` em clientes externos, execute esse pragma na sessão.
 
-### 7.1 Inicializar o banco SQLite, validar segurança (8/8) e rodar o benchmark
+### 6.1 Inicializar SQLite, rodar Segurança (8/8) e Benchmark
 ```bash
 python scripts/init_db.py --db data/missoes.db --seed
 python scripts/security_scan.py
 python bench/measure_repo.py
 ```
-*(A execução padrão é idempotente e preserva missões já existentes; passe `--reset` apenas se quiser apagar e recriar o arquivo `.db`).*
+*(Idempotente por padrão: preserva missões existentes; passe `--reset` apenas se quiser apagar e recriar o banco.)*
 
-### 7.2 Instalar as 8 Core Skills localmente
-- **Windows (PowerShell):**
-  ```powershell
-  powershell -ExecutionPolicy Bypass -File scripts/install.ps1
-  ```
-- **Linux / macOS (Bash):**
-  ```bash
-  bash scripts/install.sh
-  ```
-  *(Por padrão instala em `~/.claude/skills` preservando pastas existentes; passe `-TargetDir <pasta>` / `-Force` no PowerShell, ou `<pasta>` / `--force` no Bash).*
+### 6.2 Instalar as 8 Core Skills localmente
+```powershell
+# Windows (PowerShell)
+powershell -ExecutionPolicy Bypass -File scripts/install.ps1
+```
+```bash
+# Linux / macOS (Bash)
+bash scripts/install.sh
+```
+*(Instala por padrão em `~/.claude/skills` preservando pastas existentes; use `-TargetDir` / `-Force` no PowerShell, ou `<pasta>` / `--force` no Bash.)*
 
-### 7.3 Fluxo de Estudo 80/20 para Vídeos Longos (`Mentor de Estudos`)
+### 6.3 Estudo Ativo 80/20 (`Mentor de Estudos`)
 ```bash
 python skills/mentor-estudo-80-20/scripts/extrair_transcricao.py "https://www.youtube.com/watch?v=SEU_VIDEO"
 ```
-Depois, envie a transcrição (ou seu código/tarefa) ao agente **`Mentor de Estudos`** para receber os **20% essenciais**, **perguntas de verificação ativa** e **exercícios práticos**.
+Envie a transcrição (ou seu código/tarefa) ao agente **`Mentor de Estudos`** para extrair os **20% essenciais**, gerar **perguntas de verificação ativa** e **exercícios práticos**.
 
-### 7.4 Stack de Economia Máxima de Tokens & Portal GitHub Pages
-- Consulte [`docs/stack-plugins-mcps-economia.md`](docs/stack-plugins-mcps-economia.md) e os templates sanitizados em [`configs/mcp-servers.example.json`](configs/mcp-servers.example.json) e [`configs/claude-settings.economy.example.json`](configs/claude-settings.economy.example.json).
-- Para publicar o **Portal Interativo** (`docs/index.html`) em seu fork/repositório: no GitHub, acesse **Settings → Pages → Build and deployment → Source: `Deploy from a branch` → `main` / `/docs`**.
+### 6.4 Economia de Tokens & Portal Web
+- Guia completo e templates sanitizados: [`docs/stack-plugins-mcps-economia.md`](docs/stack-plugins-mcps-economia.md), [`configs/mcp-servers.example.json`](configs/mcp-servers.example.json) e [`configs/claude-settings.economy.example.json`](configs/claude-settings.economy.example.json).
+- Para publicar [`docs/index.html`](docs/index.html) no GitHub Pages: **Settings → Pages → Build and deployment → Source: `Deploy from a branch` → `main` / `/docs`**.
 
 ---
 
 <a id="estrutura-e-skills"></a>
-## 8. Estrutura do Repositório
+## 7. Estrutura do Repositório & Créditos
 
 ```text
 agent-company/
 ├── .github/workflows/verify.yml                           # CI automático: security scan + bench + install.sh
-├── AGENTS.md                                              # Instruções permanentes do JARVIS — Maestro
+├── AGENTS.md                                              # Instruções permanentes do Maestro
 ├── LICENSE                                                # Licença MIT
-├── README.md                                              # Documentação visual, comparativos e quickstart
+├── README.md                                              # Documentação principal
 ├── THIRD_PARTY_NOTICES.md                                 # Atribuições (ECC, Conselho, Context Mode, Ponytail, etc.)
 ├── agents/
 │   ├── roster.json                                        # Manifesto dos 21 agentes em 7 departamentos
 │   └── prompts-especialistas.md                           # Briefings reutilizáveis dos 21 papéis
-├── assets/                                                # 8 SVGs adaptativos Dark/Light (zero amarelo)
-│   ├── hero-dark.svg / hero-light.svg
-│   ├── architecture-dark.svg / architecture-light.svg
-│   ├── blind-council-dark.svg / blind-council-light.svg
-│   └── terminal-demo-dark.svg / terminal-demo-light.svg
 ├── bench/
 │   └── measure_repo.py                                    # Auditoria reproduzível de skills, roster, SQLite e segurança
 ├── configs/
@@ -304,12 +242,9 @@ agent-company/
         └── scripts/extrair_transcricao.py
 ```
 
----
-
-## 9. Créditos e Referências
-- **Autor e Arquiteto:** [Caio Renato (`@CaioRen4to`)](https://github.com/CaioRen4to)
-- **Licenças e Projetos Base:** consulte [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) para atribuições completas ao **ECC (*Everything Claude Code*)** 
-- **Literatura sobre *Self-Preference Bias* em LLMs:** Wataoka et al. (2024), *"Self-Preference Bias in LLM-as-a-Judge"*; Panickssery et al. (2024), *"LLM Evaluators Recognize and Favor Their Own Generations"*.
+- **Autor:** [Caio Renato (`@CaioRen4to`)](https://github.com/CaioRen4to)
+- **Licenças e Projetos Base:** [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) (**ECC — *Everything Claude Code***).
+- **Referências:** Wataoka et al. (2024), *"Self-Preference Bias in LLM-as-a-Judge"*; Panickssery et al. (2024), *"LLM Evaluators Recognize and Favor Their Own Generations"*.
 
 <p align="center">
   <a href="#top">Voltar ao topo ↑</a>

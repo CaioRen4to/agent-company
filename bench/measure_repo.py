@@ -127,7 +127,7 @@ def main() -> int:
     for ag in agents:
         families[ag["model_family"]] = families.get(ag["model_family"], 0) + 1
 
-    print("=== Auditoria Reproduzível — JARVIS Agent Company ===")
+    print("=== Auditoria Reproduzível — Agent Company ===")
     print(f"Agentes no roster.json: {len(agents)} em {len(roster['departments'])} departamentos")
     print(f"Distribuição por família: {families}")
     print(f"Core Skills válidas (kebab-case): {len(skills_dirs)} ({total_skill_bytes} bytes totais nos SKILL.md)")
